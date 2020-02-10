@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.rjgf</groupId>
+        <artifactId>rjgf-parent</artifactId>
+        <version>1.0.0</version>
+    </parent>
+
+    <groupId>com.rjgf</groupId>
+    <artifactId>rjgf-hadoop-util</artifactId>
+    <version>1.0.0</version>
+    <name>rjgf-hadoop-util</name>
+    <description>hadoop 工具模块</description>
+
+    <properties>
+        <impala.jdbc.version>1.0.0</impala.jdbc.version>
+    </properties>
+
+
+    <dependencies>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid-spring-boot-starter</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-jdbc</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.junit.vintage</groupId>
+                    <artifactId>junit-vintage-engine</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.hive</groupId>
+            <artifactId>hive-jdbc</artifactId>
+            <version>2.1.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.mybatis.spring.boot</groupId>
+            <artifactId>mybatis-spring-boot-starter</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-all</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.cloudera.impala.jdbc</groupId>
+            <artifactId>ImpalaJDBC41</artifactId>
+            <version>${impala.jdbc.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.cloudera.impala.jdbc</groupId>
+            <artifactId>ql</artifactId>
+            <version>${impala.jdbc.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.cloudera.impala.jdbc</groupId>
+            <artifactId>TCLIServiceClient</artifactId>
+            <version>${impala.jdbc.version}</version>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <finalName>rjgf-hadoop-util</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${maven-surefire-plugin.version}</version>
+                <configuration>
+                    <skipTests>true</skipTests>
+                    <testFailureIgnore>true</testFailureIgnore>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <!-- 配置部署构建到私服 -->
+    <distributionManagement>
+        <repository>
+            <id>rdc-releases</id>
+            <url>https://repo.rdc.aliyun.com/repository/120621-release-HldziT/</url>
+            <name>rdc-releases</name>
+        </repository>
+        <snapshotRepository>
+            <id>rdc-snapshots</id>
+            <url>https://repo.rdc.aliyun.com/repository/120621-snapshot-8OYdpv/</url>
+            <name>rdc-snapshots</name>
+        </snapshotRepository>
+    </distributionManagement>
+</project>
