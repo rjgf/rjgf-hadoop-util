@@ -18,7 +18,7 @@ import javax.sql.DataSource;
 @Configuration
 @EnableConfigurationProperties({HiveDataSourceProperties.class,HiveMybatisProperties.class})
 @AutoConfigureAfter(HiveMybatisProperties.class)
-@MapperScan(basePackages = {"com.rjgf.**.mapper.hive.**"},sqlSessionFactoryRef = "hiveSqlSessionFactory",annotationClass = Mapper.class)
+@MapperScan(basePackages = {"com.rjgf.**.mapper.hive.**"},sqlSessionFactoryRef = "hiveSqlSessionFactory",annotationClass = HadoopMapper.class)
 public class HiveConfig {
 
 	@Autowired

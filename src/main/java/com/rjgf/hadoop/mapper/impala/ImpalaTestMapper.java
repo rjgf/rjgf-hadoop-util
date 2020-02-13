@@ -1,5 +1,6 @@
 package com.rjgf.hadoop.mapper.impala;
 
+import com.rjgf.hadoop.config.HadoopMapper;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -11,7 +12,7 @@ import java.util.Map;
  * @date: 2020/2/5
  * @time: 17:04
  */
-@Mapper
+@HadoopMapper
 public interface ImpalaTestMapper {
 
 

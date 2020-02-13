@@ -21,7 +21,7 @@ import java.util.Map;
 
 @Configuration
 @ConfigurationProperties("rjgf.impala")
-@MapperScan(basePackages = {"com.rjgf.**.mapper.impala.**"}, sqlSessionFactoryRef = "impalaSqlSessionFactory", annotationClass = Mapper.class)
+@MapperScan(basePackages = {"com.rjgf.**.mapper.impala.**"}, sqlSessionFactoryRef = "impalaSqlSessionFactory", annotationClass = HadoopMapper.class)
 
 public class ImpalaConfig {
 

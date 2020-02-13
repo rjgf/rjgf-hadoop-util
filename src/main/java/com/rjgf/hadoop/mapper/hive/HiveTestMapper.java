@@ -1,6 +1,7 @@
 package com.rjgf.hadoop.mapper.hive;
 
-import org.apache.ibatis.annotations.Mapper;
+import com.rjgf.hadoop.config.HadoopMapper;
+import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
 import java.util.Map;
@@ -11,7 +12,7 @@ import java.util.Map;
  * @date: 2020/2/5
  * @time: 15:46
  */
-@Mapper
+@HadoopMapper
 public interface HiveTestMapper {
 
 
@@ -19,5 +20,6 @@ public interface HiveTestMapper {
      * 获取hive的数据列表
      * @return
      */
+//    @Select("SELECT * FROM `act_defbr_ctxt` limit 5")
     List<Map<String,Object>> getMapList();
 }
