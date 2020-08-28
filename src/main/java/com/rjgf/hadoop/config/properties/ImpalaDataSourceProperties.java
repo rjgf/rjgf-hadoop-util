@@ -1,4 +1,4 @@
-package com.rjgf.hadoop.config;
+package com.rjgf.hadoop.config.properties;
 
 import lombok.Data;
 

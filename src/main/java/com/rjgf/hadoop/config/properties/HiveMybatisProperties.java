@@ -1,6 +1,7 @@
-package com.rjgf.hadoop.config;
+package com.rjgf.hadoop.config.properties;
 
 import lombok.Data;
+import org.apache.ibatis.session.Configuration;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 /**
@@ -17,4 +18,9 @@ public class HiveMybatisProperties {
      * 配置文件地址
      */
     private String mapperLocations;
+
+    /**
+     * 配置信息
+     */
+    private Configuration configuration;
 }

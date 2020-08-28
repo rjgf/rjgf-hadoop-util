@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.rjgf.hadoop.mapper.kylin.KylinTestMapper">
+
+    <select id="getMapList" resultType="java.util.Map">
+        select grid_code,grid_mid_ltt,grid_mid_lgt,count(DISTINCT cell_id) AS cell_num,count(DISTINCT imsi) AS user_num,sum(rsrp)/count(rsrp) AS avg_rsrp from gis_village_grid
+        GROUP BY grid_code,grid_mid_ltt,grid_mid_lgt
+        limit 100
+    </select>
+</mapper>

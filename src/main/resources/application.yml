@@ -1,0 +1,43 @@
+rjgf:
+  # live 配置
+  hive:
+    url: jdbc:hive2://192.168.110.221:10000/default
+    driver-class-name: org.apache.hive.jdbc.HiveDriver
+    username: hdfs
+  #  password: hadoop
+  # impala 集群 别名 主要
+  impala:
+    database[0]:
+      url: jdbc:impala://192.168.110.222:21050/default
+      driver-class-name: com.cloudera.impala.jdbc41.Driver
+      alias: impala1
+      primary: true
+    database[1]:
+      url: jdbc:impala://192.168.110.223:21050/default
+      driver-class-name: com.cloudera.impala.jdbc41.Driver
+      alias: impala2
+    database[2]:
+      url: jdbc:impala://192.168.110.224:21050/default
+      driver-class-name: com.cloudera.impala.jdbc41.Driver
+      alias: impala3
+  kylin:
+    url: jdbc:kylin://192.168.110.224:7070/abd_project
+    driver-class-name: org.apache.kylin.jdbc.Driver
+    username: ADMIN
+    password: KYLIN
+  mybatis:
+    hive:
+      mapper-locations: classpath*:mapper/hive/**/*.xml
+    impala:
+      mapper-locations: classpath*:mapper/impala/**/*.xml
+    kylin:
+      mapper-locations: classpath*:mapper/kylin/**/*.xml
+  #公共常量
+  hadoop:
+    ip: 192.168.110.221
+    port: 8020
+#####################
+
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl

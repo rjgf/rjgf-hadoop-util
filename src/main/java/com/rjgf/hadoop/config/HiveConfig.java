@@ -1,7 +1,8 @@
 package com.rjgf.hadoop.config;
 
 import com.alibaba.druid.pool.DruidDataSource;
-import org.apache.ibatis.annotations.Mapper;
+import com.rjgf.hadoop.config.properties.HiveDataSourceProperties;
+import com.rjgf.hadoop.config.properties.HiveMybatisProperties;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.annotation.MapperScan;
@@ -16,7 +17,7 @@ import javax.sql.DataSource;
 
 
 @Configuration
-@EnableConfigurationProperties({HiveDataSourceProperties.class,HiveMybatisProperties.class})
+@EnableConfigurationProperties({HiveDataSourceProperties.class, HiveMybatisProperties.class})
 @AutoConfigureAfter(HiveMybatisProperties.class)
 @MapperScan(basePackages = {"com.rjgf.**.mapper.hive.**"},sqlSessionFactoryRef = "hiveSqlSessionFactory",annotationClass = HadoopMapper.class)
 public class HiveConfig {
@@ -46,6 +47,7 @@ public class HiveConfig {
 		SqlSessionFactoryBean factoryBean = new SqlSessionFactoryBean();
 		factoryBean.setDataSource(hiveJdbcDataSource());
 		factoryBean.setMapperLocations(new PathMatchingResourcePatternResolver().getResources(hiveMybatisProperties.getMapperLocations()));
+		factoryBean.setConfiguration(hiveMybatisProperties.getConfiguration());
 		return factoryBean.getObject();
 	}
 }

@@ -94,6 +94,13 @@
             <version>${impala.jdbc.version}</version>
         </dependency>
 
+        <!-- https://mvnrepository.com/artifact/org.apache.kylin/kylin-jdbc -->
+        <dependency>
+            <groupId>org.apache.kylin</groupId>
+            <artifactId>kylin-jdbc</artifactId>
+            <version>2.6.0</version>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -108,20 +115,39 @@
                     <testFailureIgnore>true</testFailureIgnore>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>2.4</version>
+                <configuration>
+                    <archive>
+                        <manifestEntries>
+                            <Class-Path>.</Class-Path>
+                        </manifestEntries>
+                    </archive>
+                    <excludes>
+                        <exclude>/**</exclude>
+                        <exclude>com/rjgf/hadoop/RjgfHadoopApplication.class</exclude>
+                    </excludes>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 
-    <!-- 配置部署构建到私服 -->
+    <repositories>
+        <repository>
+            <id>central-repos</id>
+            <name>Central Repository</name>
+            <url>http://repo1.maven.org/maven2/</url>
+        </repository>
+    </repositories>
+
     <distributionManagement>
         <repository>
-            <id>rdc-releases</id>
-            <url>https://repo.rdc.aliyun.com/repository/120621-release-HldziT/</url>
-            <name>rdc-releases</name>
+            <id>3rdParty</id>
+            <url>http://192.168.110.240:9091/repository/3rdParty/</url>
+            <name>3rdParty</name>
         </repository>
-        <snapshotRepository>
-            <id>rdc-snapshots</id>
-            <url>https://repo.rdc.aliyun.com/repository/120621-snapshot-8OYdpv/</url>
-            <name>rdc-snapshots</name>
-        </snapshotRepository>
     </distributionManagement>
+
 </project>
